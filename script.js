@@ -41,6 +41,12 @@ function populateUI() {
       }
     });
   }
+
+  const selectedPlayIndex = localStorage.getItem('selectedPlayIndex');
+
+  if(selectedPlayIndex !== null) {
+    playSelect.selectedIndex = selectedPlayIndex;
+  }
 }
 
 //Play select Event
@@ -59,4 +65,7 @@ container.addEventListener('click', (e) => {
 
     updateSelectedCount()
   }
-})
+});
+
+//initial count and total set
+updateSelectedCount();
