@@ -28,16 +28,20 @@ const selectedSeatCount = selectedSeats.length;
 
 count.innerText = selectedSeatCount;
 total.innerText = selectedSeatCount * ticketPrice;
-
 }
-
 
 //Get Data from localStorage and populate UI
 function populateUI() {
   const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
+
+  if(selectedSeats !== null && selectedSeats.length > 0) {
+    seats.forEach((seat, index) => {
+      if(selectedSeats.indexOf(index) > -1) {
+        seat.classList.add('selected');
+      }
+    });
+  }
 }
-
-
 
 //Play select Event
 playSelect.addEventListener('change', e => {
